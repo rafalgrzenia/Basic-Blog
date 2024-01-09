@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 import { postsRoute } from "./pages/PostsList";
 import { usersRoute } from "./pages/UsersList";
+import { todosRoute } from "./pages/TodosList";
+
 
 
 export const router = createBrowserRouter([
@@ -26,8 +28,16 @@ export const router = createBrowserRouter([
             ...usersRoute,
           },
         ],
-        
-      }
+      },
+      {
+        path: "todos",
+        children: [
+          {
+            index: true,
+            ...todosRoute,
+          },
+        ],
+      },
     ],
   },
 ]);
