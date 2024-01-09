@@ -1,0 +1,38 @@
+import { getUsers } from "../functions/users";
+import { useLoaderData } from "react-router-dom";
+
+export function UsersList() {
+  const users = useLoaderData();
+
+  return (
+    <>
+      <h1 className="page-title">Users</h1>
+      <div className="card-grid">
+        {users.map((user) => (
+          <div className="card" key={user.id}>
+            <div className="card-header">{user.name}</div>
+            <div className="card-body">
+              <div>{user.company.name}</div>
+              <div>{user.website}</div>
+              <div>{user.email}</div>
+            </div>
+            <div className="card-footer">
+              <a className="btn" to={""}>
+                View
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function loader({ request: { signal } }) {
+  return getUsers({ signal });
+}
+
+export const usersRoute = {
+  loader,
+  element: <UsersList />,
+};

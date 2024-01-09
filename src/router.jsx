@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 import { postsRoute } from "./pages/PostsList";
+import { usersRoute } from "./pages/UsersList";
 
 
 export const router = createBrowserRouter([
@@ -17,6 +18,16 @@ export const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "users",
+        children: [
+          {
+            index: true,
+            ...usersRoute,
+          },
+        ],
+        
+      }
     ],
   },
 ]);
