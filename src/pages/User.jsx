@@ -1,9 +1,10 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { getUser } from "../functions/users";
 import { getUserPosts } from "../functions/Posts";
+import { getUserTodos } from "../functions/todos";
 
 export function User() {
-  const { user, posts } = useLoaderData();
+  const { user, posts, todos } = useLoaderData();
 
   return (
     <>
@@ -37,6 +38,17 @@ export function User() {
             </div>
           ))}
         </div>
+        <h3 className="mt-4 mb-2">Todos</h3>
+        <ul>
+          {todos.map((todo) => (
+            <li
+              className={`${todo.completed ? "strike-through" : ""}`}
+              key={todo.id}
+            >
+              {todo.title}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
@@ -45,7 +57,8 @@ export function User() {
 async function loader({ request: { signal }, params: { userId } }) {
   const user = getUser(userId, { signal });
   const posts = getUserPosts(userId, { signal });
-  return { user: await user, posts: await posts };
+  const todos = getUserTodos(userId, { signal });
+  return { user: await user, posts: await posts, todos: await todos };
 }
 
 export const userRoute = {
