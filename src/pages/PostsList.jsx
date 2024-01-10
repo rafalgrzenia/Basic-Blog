@@ -4,7 +4,6 @@ import { getPosts } from "../functions/Posts";
 export default function PostsList() {
   const posts = useLoaderData();
 
-  console.log(posts);
 
   return (
     <>
