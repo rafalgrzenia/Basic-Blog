@@ -5,6 +5,7 @@ import { usersRoute } from "./pages/UsersList";
 import { todosRoute } from "./pages/TodosList";
 import { postRoute } from "./pages/Post";
 import { userRoute } from "./pages/User";
+import ErrorPage from "./pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -12,37 +13,42 @@ export const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "posts",
+        errorElement: <ErrorPage />,
         children: [
           {
-            index: true,
-            ...postsRoute,
+            path: "posts",
+            children: [
+              {
+                index: true,
+                ...postsRoute,
+              },
+              {
+                path: ":postId",
+                ...postRoute,
+              },
+            ],
           },
           {
-            path: ":postId",
-            ...postRoute,
+            path: "users",
+            children: [
+              {
+                index: true,
+                ...usersRoute,
+              },
+              {
+                path: ":userId",
+                ...userRoute,
+              },
+            ],
           },
-        ],
-      },
-      {
-        path: "users",
-        children: [
           {
-            index: true,
-            ...usersRoute,
-          },
-          {
-            path: ":userId",
-            ...userRoute,
-          },
-        ],
-      },
-      {
-        path: "todos",
-        children: [
-          {
-            index: true,
-            ...todosRoute,
+            path: "todos",
+            children: [
+              {
+                index: true,
+                ...todosRoute,
+              },
+            ],
           },
         ],
       },
