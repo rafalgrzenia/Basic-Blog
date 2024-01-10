@@ -1,6 +1,6 @@
-import axios from "axios";
+import { baseApi } from "./base";
 
 export function getTodos(options) {
-    return axios.get("http://127.0.0.1:3000/todos", options).then(res => res.data);
+    return baseApi.get("todos", options).then(res => res.data);
 }
 

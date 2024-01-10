@@ -1,13 +1,13 @@
-import axios from "axios";
+import { baseApi } from "./base";
 
 export function getUsers(options) {
-  return axios
-    .get("http://127.0.0.1:3000/users", options)
+  return baseApi
+    .get("users", options)
     .then((res) => res.data);
 }
 
 export function getUser(userId, options) {
-  return axios
-    .get(`http://127.0.0.1:3000/users/${userId}`, options)
+  return baseApi
+    .get(`users/${userId}`, options)
     .then((res) => res.data);
 }
