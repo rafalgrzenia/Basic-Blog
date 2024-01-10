@@ -1,8 +1,10 @@
-import { useLoaderData } from "react-router-dom";
-import { getPosts } from "../functions/posts";
+import { Link, useLoaderData } from "react-router-dom";
+import { getPosts } from "../functions/Posts";
 
 export default function PostsList() {
   const posts = useLoaderData();
+
+  console.log(posts);
 
   return (
     <>
@@ -15,9 +17,9 @@ export default function PostsList() {
               <div className="card-preview-text">{post.body}</div>
             </div>
             <div className="card-footer">
-              <a className="btn" to={""}>
+              <Link className="btn" to={`${post.id}`}>
                 View
-              </a>
+              </Link>
             </div>
           </div>
         ))}
