@@ -1,4 +1,4 @@
-import { Outlet, useNavigation } from "react-router-dom";
+import { Outlet, ScrollRestoration, useNavigation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function RootLayout() {
@@ -13,6 +13,7 @@ export default function RootLayout() {
       <div className={`${loadingState ? "loading" : ""} container`}>
         <Outlet />
       </div>
+      <ScrollRestoration />
     </>
   );
 }
