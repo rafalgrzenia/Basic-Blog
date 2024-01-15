@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="top-nav">
-      <div className="nav-text-large">Basic Blog</div>
+      <div className="nav-text">
+        <Link to={"/posts"}>Basic Blog</Link>
+      </div>
       <ul className="nav-list">
         <li>
           <NavLink to={"/posts"}>Posts</NavLink>
@@ -18,4 +20,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
