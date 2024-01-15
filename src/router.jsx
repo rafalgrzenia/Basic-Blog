@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 import { postsRoute } from "./pages/PostsList";
 import { usersRoute } from "./pages/UsersList";
@@ -15,6 +15,10 @@ export const router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
+          {
+            index: true,
+            element: <Navigate to={"posts"} />
+          },
           {
             path: "posts",
             children: [
