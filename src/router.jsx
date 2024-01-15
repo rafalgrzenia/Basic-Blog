@@ -59,4 +59,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+], {basename: "/Basic-Blog"});
